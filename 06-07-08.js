@@ -4,15 +4,20 @@
   código dentro de las funciones ya definidas. 
   No comentar la funcion 
 */
-function crearClasePersona() {
+function crearClasePersona() { // 
   class Persona {
     constructor(nombre, edad, hobbies, amigos) {
       // El constructor de la clase Persona recibe nombre (string), edad (integer), hobbies (array de strings), amigos (array de objetos)
       // Inicializar las propiedades de la persona con los valores recibidos como argumento
 
       // Tu código aca:
-
+      this.nombre = nombre;
+      this.edad = edad;
+      this.hobbies = hobbies;
+      this.amigos = amigos;
+      
     }
+   
 
     addFriend(nombre, edad) {
       // El método 'addFriend' recibe un string 'nombre' y un entero 'edad' y debe agregar un objeto:
@@ -20,6 +25,8 @@ function crearClasePersona() {
       // No debe retornar nada.
 
       // Tu código aca:
+      var amigo = {nombre: nombre, edad: edad};
+      this.amigos.push(amigo);
 
     }
 
@@ -28,6 +35,7 @@ function crearClasePersona() {
       // No debe retornar nada.
 
       // Tu código aca:
+      this.hobbies.push(hobby);
 
     }
     getFriends() {
@@ -38,7 +46,13 @@ function crearClasePersona() {
       // persona.getFriends() debería devolver ['martin', 'toni']
 
       // Tu código aca:
+      var nombreAmigos = [];
 
+      for (var i = 0; i < this.amigos.length; i++){
+        nombreAmigos.push(this.amigos[i].nombre);
+
+      }
+        return nombreAmigos;
     }
 
     getHobbies() {
@@ -47,7 +61,12 @@ function crearClasePersona() {
       // persona.getHobbies() debe devolver ['correr', 'dormir', 'nadar']
 
       // Tu código aca:
+      var pasatiempos = [];
 
+      for (var i = 0; i < this.hobbies.length; i++){
+        pasatiempos.push(this.hobbies[i]);
+      }
+        return pasatiempos;
     }
 
     getPromedioEdad() {
@@ -66,6 +85,15 @@ function crearClasePersona() {
       // persona.getPromedioEdad() debería devolver 29 ya que (33 + 25) / 2 = 29
 
       // Tu código aca:
+
+      var edades = 0;
+      
+      for (var i = 0; i < this.amigos.length; i++){
+        edades = edades + this.amigos[i].edad;
+        var promedio = (edades)/2; 
+
+      }
+        return promedio;
 
     }
   };
